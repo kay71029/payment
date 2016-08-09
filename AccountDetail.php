@@ -3,11 +3,12 @@
   require("defense.php");
   require("mysql.php");
   
-    $sql="SELECT * FROM `banker_detail` WHERE `ac_id`=? ";
-    $result_se_admin_str =  $db->prepare($sql);
-    $result_se_admin_str->bindParam(1, $_SESSION['ac_id']);
-    $result_se_admin_str ->execute();
-    $result_se = $result_se_admin_str->fetchAll();
+    $sql="SELECT `banker_detail`.`date`, `banker_detail`.`type`, `banker_detail`.`money`, `admin`.`ac_acount`
+          FROM `banker_detail`,`admin` WHERE `admin`.`ac_id`= ? ";
+    $result =  $db->prepare($sql);
+    $result ->bindParam(1,$_SESSION['ac_id']);
+    $result ->execute();
+    $result_se =  $result->fetchAll();
    
   
 ?>
@@ -58,7 +59,7 @@
                 <thead>
                     <tr>
                         <th>日期</th>
-                        <th>存款/提款</th>
+                        <th>(1)存款/(2)提款</th>
                         <th>金額</th>
                         <th>餘額</th>
                     </tr>
@@ -69,7 +70,7 @@
                         <td><?PHP echo $row['date']; ?></td>
                         <td><?PHP echo $row['type']; ?></td>
                         <td><?PHP echo $row['money']; ?></td>
-                        <td><?PHP echo $row['balance']; ?></td>
+                        <td><?PHP echo $row['ac_acount']; ?></td>
                     </tr>
                     <?php }?>
                 </tbody>
