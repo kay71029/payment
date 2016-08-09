@@ -1,7 +1,7 @@
 <?php
 
-    require("mysql.php");
     session_start();
+    require("mysql.php");
     require("defense.php");
 
 ?> 
