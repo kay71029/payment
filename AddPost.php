@@ -1,7 +1,6 @@
 <?php
-
     session_start();
-    require("mysql.php");
+    require("Mysql.php");
     header('Content-Type: text/html; charset = utf-8');
 
     if ($_POST["ac_acount"] != null) {
@@ -36,5 +35,5 @@
             $db->rollBack();
         }
         echo "新增成功";
-        header("Refresh:0.5; url = accountDetail.php");
+        header("Refresh:0.5; url = AccountDetail.php");
     }

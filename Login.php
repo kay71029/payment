@@ -21,7 +21,7 @@
                         <h3 class = "panel-title">Please Sign In</h3>
                     </div>
                     <div class = "panel-body">
-                        <form action = "check.php" method = "post">
+                        <form action = "Check.php" method = "post">
                             <fieldset>
                                 <div class = "form-group">
                                     <input class = "form-control" placeholder = "Username" name = "ac_id" type = "" autofocus>

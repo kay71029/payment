@@ -1,6 +1,6 @@
  <?php
     session_start();
-    require("mysql.php");
+    require("Mysql.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,29 +12,29 @@
 </head>
 <body>
 <nav class = "navbar navbar-inverse" align = right>
-  <div class = "container-fluid">
+    <div class = "container-fluid">
     <div class = "navbar-header">
-      <button type = "button" class = "navbar-toggle collapsed" data-toggle = "collapse" data-target = "#bs-example-navbar-collapse-1" aria-expanded = "false">
+      <button type = "button" class = "navbar-toggle collapsed" data-toggle="collapse" data-target = "#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class = "sr-only">Toggle navigation</span>
         <span class = "icon-bar"></span>
         <span class = "icon-bar"></span>
         <span class = "icon-bar"></span>
       </button>
-      <a class = "navbar-brand" href = "accountDetail.php">首頁</a>
+      <a class = "navbar-brand" href="AccountDetail.php">首頁</a>
     </div>
     <div class = "collapse navbar-collapse" id = "bs-example-navbar-collapse-1">
       <ul class = "nav navbar-nav">
-        <li class = "active"><a href = "addMoney.php">存款<span class = "sr-only">(current)</span></a></li>
-        <li class = "active"><a href = "payMoney.php">付款<span class = "sr-only">(current)</span></a></li>
-        <li class = "active"><a href = "accountDetail.php">查詢明細<span class = "sr-only">(current)</span></a></li>
+        <li class = "active"><a href = "AddMoney.php">存款<span class = "sr-only">(current)</span></a></li>
+        <li class = "active"><a href = "PayMoney.php">付款<span class = "sr-only">(current)</span></a></li>
+        <li class = "active"><a href = "AccountDetail.php">查詢明細<span class = "sr-only">(current)</span></a></li>
       </ul>
-       <form action = "logout.php">
+       <form action = "Logout.php">
        <button class = "btn btn-default navbar-btn">登出</button>
        </form>
     </div>
-  </div>
+    </div>
 </nav>
-<form method = "post" action  = "payPost.php">
+<form method = "post" action  = "PayPost.php">
     <div class = "form-group input-group">
         <span class = "input-group-addon"><?php echo $datetime = date("Y/m/d H:i");?></span>
     </div>

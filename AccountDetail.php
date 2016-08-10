@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require("mysql.php");
+    require("Mysql.php");
     $sql = "SELECT `bd`.`date`, `bd`.`type`, `bd`.`money`, `ad`.`ac_acount`,`bd`.`blance`
            FROM `banker_detail` AS `bd`, `admin` AS `ad` WHERE `ad`.`ac_id` = :ac_id
            ORDER BY `bd`.`date` DESC";
@@ -27,15 +27,15 @@
         <span class = "icon-bar"></span>
         <span class = "icon-bar"></span>
       </button>
-      <a class = "navbar-brand" href="accountDetail.php">首頁</a>
+      <a class = "navbar-brand" href="AccountDetail.php">首頁</a>
     </div>
     <div class = "collapse navbar-collapse" id = "bs-example-navbar-collapse-1">
       <ul class = "nav navbar-nav">
-        <li class = "active"><a href = "addMoney.php">存款<span class = "sr-only">(current)</span></a></li>
-        <li class = "active"><a href = "payMoney.php">付款<span class = "sr-only">(current)</span></a></li>
-        <li class = "active"><a href = "accountDetail.php">查詢明細<span class = "sr-only">(current)</span></a></li>
+        <li class = "active"><a href = "AddMoney.php">存款<span class = "sr-only">(current)</span></a></li>
+        <li class = "active"><a href = "PayMoney.php">付款<span class = "sr-only">(current)</span></a></li>
+        <li class = "active"><a href = "AccountDetail.php">查詢明細<span class = "sr-only">(current)</span></a></li>
       </ul>
-       <form action = "logout.php">
+       <form action = "Logout.php">
        <button class = "btn btn-default navbar-btn">登出</button>
        </form>
     </div>
@@ -58,7 +58,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                     <?php foreach($data as $row){?>
+                    <?php foreach($data as $row){?>
                     <tr class = "odd gradeX">
                         <td><?PHP echo $row['date']; ?></td>
                         <td><?PHP echo $row['type']; ?></td>

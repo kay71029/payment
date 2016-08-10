@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    require("mysql.php");
+    require("Mysql.php");
     header('Content-Type: text/html; charset=utf-8');
     $id = $_POST['ac_id'];
     $pw = $_POST['ac_pw'];
@@ -16,8 +16,8 @@
     if ($count == 1) {
         $_SESSION['ac_id'] = $id;
         echo '登入成功!';
-        header("Refresh:0.5; url = accountDetail.php");
+        header("Refresh:0.5; url = AccountDetail.php");
     } else {
         echo '登入失敗!';
-        header("Refresh:0.5; url = login.php");
+        header("Refresh:0.5; url = Login.php");
     }
