@@ -15,7 +15,6 @@
 
     if (count($data) == 1) {
         $_SESSION['ac_id'] = $id;
-        echo $_SESSION['ac_id'];
         echo '登入成功!';
         header("Refresh:0.5; url = accountDetail.php");
     } else {
