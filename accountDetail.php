@@ -1,7 +1,7 @@
 <?php
     session_start();
     require("mysql.php");
-
+    require("defense.php");
     $sql = "SELECT `banker_detail`.`date`, `banker_detail`.`type`, `banker_detail`.`money`, `admin`.`ac_acount`
            FROM `banker_detail`, `admin` WHERE `admin`.`ac_id` = :ac_id";
     $result = $db->prepare($sql);

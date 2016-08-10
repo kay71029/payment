@@ -1,6 +1,7 @@
  <?php
     session_start();
     require("mysql.php");
+    require("defense.php");
 ?>
 <!DOCTYPE html>
 <html>
