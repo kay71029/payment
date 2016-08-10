@@ -7,9 +7,9 @@
     if (isset($_POST["ok"]) && $_POST["ac_acount"] != null) {
         $db->beginTransaction();
         try {
-                $sql = "SELECT * FROM `admin` WHERE `ac_id` = ? FOR UPDATE";
+                $sql = "SELECT * FROM `admin` WHERE `ac_id` = :ac_id FOR UPDATE";
                 $result = $db->prepare($sql);
-                $result->bindParam(1, $_SESSION['ac_id']);
+                $result->bindParam('ac_id', $_SESSION['ac_id']);
                 $result->execute();
                 $data = $result->fetch();
 
@@ -17,18 +17,18 @@
                 $saveMoney = $_POST["ac_acount"];
                 $totalMoney = $orgMoney + $saveMoney;
 
-                $sql = "UPDATE `admin` SET `ac_acount`= ? WHERE `ac_id` = ? ";
+                $sql = "UPDATE `admin` SET `ac_acount`= :ac_acount WHERE `ac_id` = :ac_id";
                 $result = $db->prepare($sql);
-                $result->bindParam(1, $totalMoney);
-                $result->bindParam(2, $_SESSION['ac_id']);
+                $result->bindParam('ac_acount', $totalMoney);
+                $result->bindParam('ac_id', $_SESSION['ac_id']);
                 $result->execute();
                 $data = $result->fetchAll();
 
-                $sql = "INSERT INTO `banker_detail`(`ac_id`,`type`, `money`, `date`) VALUES (?,1,?,?)";
+                $sql = "INSERT INTO `banker_detail`(`ac_id`,`type`, `money`, `date`) VALUES (:ac_id, 1, :money, :date)";
                 $result = $db->prepare($sql);
-                $result->bindParam(1, $_SESSION['ac_id']);
-                $result->bindParam(2, $saveMoney);
-                $result->bindParam(3, $_POST["time"]);
+                $result->bindParam('ac_id', $_SESSION['ac_id']);
+                $result->bindParam('money', $saveMoney);
+                $result->bindParam('date', $_POST["time"]);
                 $result->execute();
                 $data = $result->fetchAll();
                 $db->commit();
@@ -37,5 +37,5 @@
             $db->rollBack();
         }
         echo "新增成功";
-        echo '<meta http-equiv = REFRESH CONTENT = 1;url = Addmoney.php>';
+        header("Refresh:0.5; url = accountDetail.php");
     }

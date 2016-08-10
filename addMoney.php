@@ -34,7 +34,7 @@
     </div>
   </div>
 </nav>
-<form method = "post" action  = "Addpost.php">
+<form method = "post" action  = "addPost.php">
     <div class = "form-group input-group">
         <span class = "input-group-addon"><?php echo $datetime = date("Y/m/d" ,strtotime('+8HOUR'));?></span>
     </div>
