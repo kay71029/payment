@@ -5,6 +5,7 @@
     header('Content-Type: text/html; charset = utf-8');
 
     if ($_POST["ac_acount"] != null) {
+
         $db->beginTransaction();
         try {
         $sql = "SELECT * FROM `admin` WHERE `ac_id` = :ac_id FOR UPDATE";
