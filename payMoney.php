@@ -44,7 +44,7 @@
         <input type = "number" class = "form-control"  aria-describedby = "basic-addon1" name = "ac_acount" min = "0">
     </div>
         <br>
-        <button type = "submit" class = "btn btn-default navbar-btn" name = "ok">確認</button>
+        <button type = "submit" class = "btn btn-default navbar-btn" name = "payOk">確認</button>
 </form>
     <script src = "assets/js/jquery.js"></script>
     <script src = "assets/js/bootstrap.min.js"></script>

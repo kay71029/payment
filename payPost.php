@@ -4,7 +4,7 @@
     require("mysql.php");
     header('Content-Type: text/html; charset=utf-8');
 
-    if (isset($_POST["ok"]) && $_POST["ac_acount"] != null ) {
+    if ($_POST["ac_acount"] != null ) {
         $db->beginTransaction();
         try {
             $sql = "SELECT * FROM `admin` WHERE `ac_id` = :ac_id FOR UPDATE";
