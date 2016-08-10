@@ -41,7 +41,7 @@
     <input type = "hidden" name = "time" value = "<?php echo $datetime = date("Y/m/d H:i");?>">
      <div class = "form-group input-group">
         <span class = "input-group-addon">金額</span>
-        <input type = "number" class = "form-control"  aria-describedby = "basic-addon1" name = "ac_acount">
+        <input type = "number" class = "form-control"  aria-describedby = "basic-addon1" name = "ac_acount" min = "0">
     </div>
         <br>
         <button type = "submit" class = "btn btn-default navbar-btn" name = "ok">確認</button>

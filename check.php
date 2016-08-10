@@ -8,12 +8,12 @@
 
     $sql = "SELECT * FROM `admin` WHERE `ac_id` = :ac_id AND `ac_pw` = :ac_pw";
     $result = $db->prepare($sql);
-    $result->bindParam('ac_id', $id, PDO::PARAM_STR);
-    $result->bindParam('ac_pw', $pw, PDO::PARAM_STR);
+    $result->bindParam('ac_id', $id);
+    $result->bindParam('ac_pw', $pw);
     $result->execute();
-    $data = $result->fetchAll();
+    $count = $result->rowCount();
 
-    if (count($data) == 1) {
+    if ($count == 1) {
         $_SESSION['ac_id'] = $id;
         echo '登入成功!';
         header("Refresh:0.5; url = accountDetail.php");
