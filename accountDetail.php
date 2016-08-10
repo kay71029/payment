@@ -2,7 +2,7 @@
     session_start();
     require("mysql.php");
     //require("defense.php");
-    $sql = "SELECT `bd`.`date`, `bd`.`type`, `bd`.`money`, `ad`.`ac_acount`
+    $sql = "SELECT `bd`.`date`, `bd`.`type`, `bd`.`money`, `ad`.`ac_acount`,`bd`.`blance`
            FROM `banker_detail` AS `bd`, `admin` AS `ad` WHERE `ad`.`ac_id` = :ac_id";
     $result = $db->prepare($sql);
     $result->bindParam('ac_id', $_SESSION['ac_id']);
@@ -52,6 +52,7 @@
                     <tr>
                         <th>日期</th>
                         <th>(1)存款/(2)提款</th>
+                        <th>原金額</th>
                         <th>金額</th>
                         <th>餘額</th>
                     </tr>
@@ -61,6 +62,7 @@
                     <tr class = "odd gradeX">
                         <td><?PHP echo $row['date']; ?></td>
                         <td><?PHP echo $row['type']; ?></td>
+                        <td><?PHP echo $row['blance']; ?></td>
                         <td><?PHP echo $row['money']; ?></td>
                         <td><?PHP echo $row['ac_acount']; ?></td>
                     </tr>

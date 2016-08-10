@@ -5,8 +5,8 @@
     header('Content-Type: text/html; charset=utf-8');
 
     if ($_POST["ac_acount"] != null ) {
-        $db->beginTransaction();
         try {
+            $db->beginTransaction();
             $sql = "SELECT * FROM `admin` WHERE `ac_id` = :ac_id FOR UPDATE";
             $result = $db->prepare($sql);
             $result->bindParam('ac_id', $_SESSION['ac_id']);
@@ -23,15 +23,14 @@
                 $result->bindParam('ac_acount', $totalMoney);
                 $result->bindParam('ac_id', $_SESSION['ac_id']);
                 $result->execute();
-                $data = $result->fetchAll();
-                //sleep(3);
-                $sql = "INSERT INTO `banker_detail`(`ac_id`, `type`, `money`, `date`) VALUES (:ac_id, 2, :money, :date)";
+
+                $sql = "INSERT INTO `banker_detail`(`ac_id`, `type`, `money`, `date`, `blance`) VALUES (:ac_id, 2, :money, :date, :blance)";
                 $result = $db->prepare($sql);
                 $result->bindParam('ac_id', $_SESSION['ac_id']);
                 $result->bindParam('money', $payMoney);
                 $result->bindParam('date', $_POST["time"]);
+                $result->bindParam('blance', $orgMoney);
                 $result->execute();
-                $data = $result->fetchAll();
                 $db->commit();
             } else {
                 echo "餘額不足";
