@@ -13,16 +13,13 @@
                 $result->execute();
                 $data = $result->fetch();
 
-                //原帳戶金額
                 $orgMoney = $data['ac_acount'];
-                //存入的金額
-                $acAcount = $_POST["ac_acount"];
-                //計算餘額
-                $orgMoney2 = $orgMoney + $acAcount;
+                $saveMoney = $_POST["ac_acount"];
+                $totalMoney = $orgMoney + $saveMoney;
 
                 $sql = "UPDATE `admin` SET `ac_acount`= ? WHERE `ac_id` = ? ";
                 $result = $db->prepare($sql);
-                $result->bindParam(1, $orgMoney2);
+                $result->bindParam(1, $totalMoney);
                 $result->bindParam(2, $_SESSION['ac_id']);
                 $result->execute();
                 $data = $result->fetchAll();
@@ -30,7 +27,7 @@
                 $sql = "INSERT INTO `banker_detail`(`ac_id`,`type`, `money`, `date`) VALUES (?,1,?,?)";
                 $result = $db->prepare($sql);
                 $result->bindParam(1, $_SESSION['ac_id']);
-                $result->bindParam(2, $acAcount);
+                $result->bindParam(2, $saveMoney);
                 $result->bindParam(3, $_POST["time"]);
                 $result->execute();
                 $data = $result->fetchAll();

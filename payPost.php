@@ -13,17 +13,14 @@
                 $result->execute();
                 $data = $result->fetch();
 
-                //原帳戶金額
                 $orgMoney = $data['ac_acount'];
-                //付款的金額
-                $acAcount = $_POST["ac_acount"];
-                //計算餘額
-                $orgMoney2 = $orgMoney - $acAcount;
+                $payMoney = $_POST["ac_acount"];
+                $totalMoney = $orgMoney - $payMoney;
 
-                if ($orgMoney2 >= 0) {
+                if ($totalMoney >= 0) {
                     $sql = "UPDATE `admin` SET `ac_acount`= ? WHERE `ac_id` = ? "  ;
                     $result = $db->prepare($sql);
-                    $result->bindParam(1, $orgMoney2);
+                    $result->bindParam(1, $totalMoney);
                     $result->bindParam(2, $_SESSION['ac_id']);
                     $result->execute();
                     $data = $result->fetchAll();
@@ -32,19 +29,19 @@
                     $sql = "INSERT INTO `banker_detail`(`ac_id`, `type`, `money`, `date`) VALUES (?,2,?,?)";
                     $result = $db->prepare($sql);
                     $result->bindParam(1, $_SESSION['ac_id']);
-                    $result->bindParam(2, $acAcount);
+                    $result->bindParam(2, $payMoney);
                     $result->bindParam(3, $_POST["time"]);
                     $result->execute();
                     $data = $result->fetchAll();
                     $db->commit();
                 } else {
                     echo "餘額不足";
-                    echo '<meta http-equiv = REFRESH CONTENT=1;url=Paymoney.php>';
+                    echo '<meta http-equiv = REFRESH CONTENT = 1;url = Paymoney.php>';
                 }
             } catch (Exception $e) {
                 echo $e->getMessage();
                 $db->rollBack();
         }
         echo "新增成功";
-        echo '<meta http-equiv = REFRESH CONTENT=1;url=Paymoney.php>';
+        echo '<meta http-equiv = REFRESH CONTENT = 1;url = Paymoney.php>';
     }
