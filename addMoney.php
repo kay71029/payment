@@ -36,9 +36,9 @@
 </nav>
 <form method = "post" action  = "addPost.php">
     <div class = "form-group input-group">
-        <span class = "input-group-addon"><?php echo $datetime = date("Y/m/d" ,strtotime('+8HOUR'));?></span>
+        <span class = "input-group-addon"><?php echo $datetime = date("Y/m/d H:i" ,strtotime('+8HOUR'));?></span>
     </div>
-    <input type = "hidden" name = "time" value = "<?php echo $datetime = date("Y/m/d" ,strtotime('+8HOUR'));?>">
+    <input type = "hidden" name = "time" value = "<?php echo $datetime = date("Y/m/d H:i" ,strtotime('+8HOUR'));?>">
      <div class = "form-group input-group">
         <span class = "input-group-addon">金額</span>
         <input type = "number" class = "form-control"  aria-describedby = "basic-addon1" name = "ac_acount">
