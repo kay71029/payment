@@ -1,7 +1,6 @@
  <?php
     session_start();
     require("mysql.php");
-    require("defense.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,9 +36,9 @@
 </nav>
 <form method = "post" action  = "payPost.php">
     <div class = "form-group input-group">
-        <span class = "input-group-addon"><?php echo $datetime = date("Y/m/d H:i" ,strtotime('+8HOUR'));?></span>
+        <span class = "input-group-addon"><?php echo $datetime = date("Y/m/d H:i");?></span>
     </div>
-    <input type = "hidden" name = "time" value = "<?php echo $datetime = date("Y/m/d H:i" ,strtotime('+8HOUR'));?>">
+    <input type = "hidden" name = "time" value = "<?php echo $datetime = date("Y/m/d H:i");?>">
      <div class = "form-group input-group">
         <span class = "input-group-addon">金額</span>
         <input type = "number" class = "form-control"  aria-describedby = "basic-addon1" name = "ac_acount">
