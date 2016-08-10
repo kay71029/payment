@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    require("Mysql.php");
+    require("MySql.php");
     header('Content-Type: text/html; charset=utf-8');
 
     if ($_POST["ac_acount"] != null ) {

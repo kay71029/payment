@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require("Mysql.php");
+    require("MySql.php");
     $sql = "SELECT `bd`.`date`, `bd`.`type`, `bd`.`money`, `ad`.`ac_acount`,`bd`.`blance`
            FROM `banker_detail` AS `bd`, `admin` AS `ad` WHERE `ad`.`ac_id` = :ac_id
            ORDER BY `bd`.`date` DESC";

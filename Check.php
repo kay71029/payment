@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    require("Mysql.php");
+    require("MySql.php");
     header('Content-Type: text/html; charset=utf-8');
     $id = $_POST['ac_id'];
     $pw = $_POST['ac_pw'];
