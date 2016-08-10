@@ -1,9 +1,9 @@
 <?php
     session_start();
     require("mysql.php");
-    //require("defense.php");
     $sql = "SELECT `bd`.`date`, `bd`.`type`, `bd`.`money`, `ad`.`ac_acount`,`bd`.`blance`
-           FROM `banker_detail` AS `bd`, `admin` AS `ad` WHERE `ad`.`ac_id` = :ac_id";
+           FROM `banker_detail` AS `bd`, `admin` AS `ad` WHERE `ad`.`ac_id` = :ac_id
+           ORDER BY `bd`.`date` DESC";
     $result = $db->prepare($sql);
     $result->bindParam('ac_id', $_SESSION['ac_id']);
     $result->execute();
