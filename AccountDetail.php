@@ -2,8 +2,8 @@
     session_start();
     require("MySql.php");
     $sql = "SELECT `bd`.`date`, `bd`.`type`, `bd`.`money`, `ad`.`ac_acount`,`bd`.`blance`
-           FROM `banker_detail` AS `bd`, `admin` AS `ad` WHERE `ad`.`ac_id` = :ac_id
-           ORDER BY `bd`.`date` DESC";
+        FROM `banker_detail` AS `bd`, `admin` AS `ad` WHERE `ad`.`ac_id` = :ac_id AND `bd`.`ac_id` = :ac_id
+        ORDER BY `bd`.`date` DESC";
     $result = $db->prepare($sql);
     $result->bindParam('ac_id', $_SESSION['ac_id']);
     $result->execute();
@@ -64,7 +64,7 @@
                         <td><?PHP echo $row['type']; ?></td>
                         <td><?PHP echo $row['blance']; ?></td>
                         <td><?PHP echo $row['money']; ?></td>
-                        <td><?PHP echo $row['ac_acount']; ?></td>
+                        <td><?PHP echo $row['blance']; ?></td>
                     </tr>
                     <?php }?>
                 </tbody>
