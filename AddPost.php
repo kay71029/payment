@@ -22,7 +22,7 @@
             $result->bindParam(':ac_id', $_SESSION['ac_id']);
             $result->execute();
 
-            $sql = "INSERT INTO `banker_detail`(`ac_id`,`type`, `money`, `date`,`blance`,`acountRecord`) VALUES (:ac_id, 1, :money, :date, :blance, :acountRecord)";
+            $sql = "INSERT INTO `banker_detail`(`ac_id`, `type`, `money`, `date`, `blance`, `acountRecord`) VALUES (:ac_id, 1, :money, :date, :blance, :acountRecord)";
             $result = $db->prepare($sql);
             $result->bindParam(':ac_id', $_SESSION['ac_id']);
             $result->bindParam(':money', $saveMoney);
