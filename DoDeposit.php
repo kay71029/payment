@@ -18,7 +18,7 @@ if ($_POST["ac_acount"] != null) {
         $totalMoney = $originalMoney + $saveMoney;
 
         $sql = "UPDATE `admin` SET `ac_acount` = `ac_acount` + :ac_acount,`ac_v"
-        . "ersion` = `ac_version`+:ac_version WHERE `ac_id` = :ac_id";
+        . "ersion` = :ac_version +1 WHERE `ac_id` = :ac_id";
         $result = $db->prepare($sql);
         $result->bindParam(':ac_acount', $saveMoney);
         $result->bindParam(':ac_id', $_SESSION['ac_id']);

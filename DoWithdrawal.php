@@ -22,7 +22,7 @@ if ($_POST["ac_acount"] != null) {
         }
 
         $sql = "UPDATE `admin` SET `ac_acount` = `ac_acount` - :ac_acount,`ac_v"
-        . "ersion` = `ac_version`+:ac_version WHERE `ac_id` = :ac_id";
+        . "ersion` = :ac_version +1 WHERE `ac_id` = :ac_id";
         $result = $db->prepare($sql);
         $result->bindParam(':ac_acount', $payMoney);
         $result->bindParam(':ac_id', $_SESSION['ac_id']);
@@ -40,12 +40,10 @@ if ($_POST["ac_acount"] != null) {
         $result->bindParam(':newBlance', $totalMoney);
         $result->execute();
         $db->commit();
+        echo "新增成功";
     } catch (Exception $e) {
         $db->rollBack();
         echo $e->getMessage();
-        header("Refresh:0.5; url = ShowWithdrawalPage.php");
-        exit();
     }
-    echo "新增成功";
     header("Refresh:0.5; url = ShowAccountDetailPage.php");
 }
