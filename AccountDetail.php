@@ -1,11 +1,9 @@
 <?php
     session_start();
     require("MySql.php");
-    $sql = "SELECT `bd`.`date`, `bd`.`type`, `bd`.`money`, `ad`.`ac_acount`,`bd`.`blance`
-        FROM `banker_detail` AS `bd`, `admin` AS `ad` WHERE `ad`.`ac_id` = :ac_id AND `bd`.`ac_id` = :ac_id
-        ORDER BY `bd`.`date` DESC";
+    $sql = "SELECT * FROM `banker_detail` WHERE `banker_detail`.`ac_id` = :ac_id ORDER BY `banker_detail`.`date` DESC";
     $result = $db->prepare($sql);
-    $result->bindParam('ac_id', $_SESSION['ac_id']);
+    $result->bindParam(':ac_id', $_SESSION['ac_id']);
     $result->execute();
     $data = $result->fetchAll();
 ?>
@@ -64,7 +62,7 @@
                         <td><?PHP echo $row['type']; ?></td>
                         <td><?PHP echo $row['blance']; ?></td>
                         <td><?PHP echo $row['money']; ?></td>
-                        <td><?PHP echo $row['blance']; ?></td>
+                        <td><?PHP echo $row['acountRecord']; ?></td>
                     </tr>
                     <?php }?>
                 </tbody>
