@@ -6,13 +6,14 @@ header('Content-Type: text/html; charset=utf-8');
 if ($_POST["ac_acount"] != null) {
     try {
         $db->beginTransaction();
-        $sql = "SELECT * FROM `admin` WHERE `ac_id` = :ac_id FOR UPDATE";
+        $sql = "SELECT * FROM `admin` WHERE `ac_id` = :ac_id";
         $result = $db->prepare($sql);
         $result->bindParam('ac_id', $_SESSION['ac_id']);
         $result->execute();
         $data = $result->fetch();
 
         $originalMoney = $data['ac_acount'];
+        $acVersion = $data['ac_version'];
         $payMoney = $_POST["ac_acount"];
         $totalMoney = $originalMoney - $payMoney;
 
@@ -20,13 +21,17 @@ if ($_POST["ac_acount"] != null) {
             throw new Exception("餘額不足");
         }
 
-        $sql = "UPDATE `admin` SET `ac_acount`= `ac_acount` - :ac_acount WHERE `ac_id` = :ac_id ";
+        $sql = "UPDATE `admin` SET `ac_acount` = `ac_acount` - :ac_acount,`ac_v"
+        . "ersion` = `ac_version`+:ac_version WHERE `ac_id` = :ac_id";
         $result = $db->prepare($sql);
         $result->bindParam(':ac_acount', $payMoney);
         $result->bindParam(':ac_id', $_SESSION['ac_id']);
+        $result->bindParam(':ac_version', $acVersion);
         $result->execute();
 
-        $sql = "INSERT INTO `banker_detail`(`ac_id`, `type`, `money`, `date`, `blance`, `newBlance`) VALUES (:ac_id, 2, :money, :date, :blance, :newBlance)";
+        $sql = "INSERT INTO `banker_detail`(`ac_id`, `type`, `money`, `date`, `"
+        . "blance`, `newBlance`) VALUES (:ac_id, 2, :money, :date, :blance, :ne"
+        . "wBlance)";
         $result = $db->prepare($sql);
         $result->bindParam(':ac_id', $_SESSION['ac_id']);
         $result->bindParam(':money', $payMoney);
