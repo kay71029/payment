@@ -37,7 +37,7 @@
             $db->commit();
 
         } catch (Exception $e) {
-             $db->rollBack();
+            $db->rollBack();
             echo $e->getMessage();
             header("Refresh:0.5; url = PayMoney.php");
             exit();
