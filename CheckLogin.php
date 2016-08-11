@@ -12,11 +12,11 @@ $result->bindParam('ac_pw', $pw);
 $result->execute();
 $count = $result->rowCount();
 
-    if ($count == 1) {
-        $_SESSION['ac_id'] = $id;
-        echo '登入成功!';
-        header("Refresh:0.5; url = ShowAccountDetailPage.php");
-    } else {
-        echo '登入失敗!';
-        header("Refresh:0.5; url = ShowLoginPage.php");
-    }
+if ($count == 1) {
+    $_SESSION['ac_id'] = $id;
+    echo '登入成功!';
+    header("Refresh:0.5; url = ShowAccountDetailPage.php");
+} else {
+    echo '登入失敗!';
+    header("Refresh:0.5; url = ShowLoginPage.php");
+}
