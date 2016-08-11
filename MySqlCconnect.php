@@ -1,9 +1,9 @@
 <?php
-    $dbType = 'mysql';
-    $dbHost = 'localhost';
-    $dbName = 'banker';
-    $dbUser = 'root';
-    $dbPassword = '';
+$dbType = 'mysql';
+$dbHost = 'localhost';
+$dbName = 'banker';
+$dbUser = 'root';
+$dbPassword = '';
 
     try {
         $db = new PDO($dbType . ':host=' . $dbHost . ';dbname=' . $dbName, $dbUser, $dbPassword);

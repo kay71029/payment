@@ -1,11 +1,11 @@
 <?php
-    session_start();
-    require("MySql.php");
-    $sql = "SELECT * FROM `banker_detail` WHERE `banker_detail`.`ac_id` = :ac_id ORDER BY `banker_detail`.`date` DESC";
-    $result = $db->prepare($sql);
-    $result->bindParam(':ac_id', $_SESSION['ac_id']);
-    $result->execute();
-    $data = $result->fetchAll();
+session_start();
+require("MySqlCconnect.php");
+$sql = "SELECT * FROM `banker_detail` WHERE `banker_detail`.`ac_id` = :ac_id ORDER BY `banker_detail`.`date` DESC";
+$result = $db->prepare($sql);
+$result->bindParam(':ac_id', $_SESSION['ac_id']);
+$result->execute();
+$data = $result->fetchAll();
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,13 +25,13 @@
         <span class = "icon-bar"></span>
         <span class = "icon-bar"></span>
       </button>
-      <a class = "navbar-brand" href="AccountDetail.php">首頁</a>
+      <a class = "navbar-brand" href="ShowAccountDetailPage.php">首頁</a>
     </div>
     <div class = "collapse navbar-collapse" id = "bs-example-navbar-collapse-1">
       <ul class = "nav navbar-nav">
-        <li class = "active"><a href = "AddMoney.php">存款<span class = "sr-only">(current)</span></a></li>
-        <li class = "active"><a href = "PayMoney.php">付款<span class = "sr-only">(current)</span></a></li>
-        <li class = "active"><a href = "AccountDetail.php">查詢明細<span class = "sr-only">(current)</span></a></li>
+        <li class = "active"><a href = "ShowDepositPage.php">存款<span class = "sr-only">(current)</span></a></li>
+        <li class = "active"><a href = "ShowWithdrawalPage.php">付款<span class = "sr-only">(current)</span></a></li>
+        <li class = "active"><a href = "ShowAccountDetailPage.php">查詢明細<span class = "sr-only">(current)</span></a></li>
       </ul>
        <form action = "Logout.php">
        <button class = "btn btn-default navbar-btn">登出</button>
@@ -62,7 +62,7 @@
                         <td><?PHP echo $row['type']; ?></td>
                         <td><?PHP echo $row['blance']; ?></td>
                         <td><?PHP echo $row['money']; ?></td>
-                        <td><?PHP echo $row['acountRecord']; ?></td>
+                        <td><?PHP echo $row['newBlance']; ?></td>
                     </tr>
                     <?php }?>
                 </tbody>
