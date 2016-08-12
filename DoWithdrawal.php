@@ -21,9 +21,9 @@ if ($_POST["ac_acount"] != null) {
             throw new Exception("餘額不足");
         }
 
-        $sql = "UPDATE `admin` SET `ac_acount` = `ac_acount` - :ac_acount,`ac_v"
-        . "ersion` = :ac_version +1 WHERE `ac_id` = :ac_id AND `ac_version` = :"
-        . "ac_version";
+        $sql = "UPDATE `admin` SET `ac_acount` = `ac_acount` - :ac_acount,"
+            . "`ac_version` = :ac_version +1 WHERE `ac_id` = :ac_id AND "
+            . "`ac_version` = :ac_version";
         $result = $db->prepare($sql);
         $result->bindParam(':ac_acount', $payMoney);
         $result->bindParam(':ac_id', $_SESSION['ac_id']);
@@ -33,11 +33,11 @@ if ($_POST["ac_acount"] != null) {
 
         if ($count != 1) {
             throw new Exception("失敗");
-         }
+        }
 
-        $sql = "INSERT INTO `banker_detail`(`ac_id`, `type`, `money`, `date`, `"
-        . "blance`, `newBlance`) VALUES (:ac_id, 2, :money, :date, :blance, :ne"
-        . "wBlance)";
+        $sql = "INSERT INTO `banker_detail`(`ac_id`, `type`, `money`, `date`,"
+            . "`blance`, `newBlance`) VALUES (:ac_id, 2, :money, :date, :blance,"
+            . ":newBlance)";
         $result = $db->prepare($sql);
         $result->bindParam(':ac_id', $_SESSION['ac_id']);
         $result->bindParam(':money', $payMoney);
